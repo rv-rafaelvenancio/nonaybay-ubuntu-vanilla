@@ -1,0 +1,14 @@
+$animation-duration: (
+  'snap':                         100ms,
+  'fast':                         165ms,
+  'brisk':                        333ms,
+  'slow':                         500ms,
+  'sleepy':                       1000ms,
+);
+
+
+
+$animation-easing: (
+  'out':                          cubic-bezier(0.215, 0.610, 0.355, 1.000),
+  'in':                           cubic-bezier(0.550, 0.055, 0.675, 0.190),
+);
