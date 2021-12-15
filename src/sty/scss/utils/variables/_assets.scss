@@ -1,0 +1,6 @@
+$_assets-version:                 1;
+$_assets_path_url_scheme:         'https';
+$_assets_path_url_domain:         'assets.ubuntu.com';
+$_assets_path_url_path:           'v#{$_assets-version}';
+
+$assets-path:                     '#{$_assets_path_url_scheme}://#{$_assets_path_url_domain}/#{$_assets_path_url_path}/';
