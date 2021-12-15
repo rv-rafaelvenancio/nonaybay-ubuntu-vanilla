@@ -9,3 +9,9 @@
 
   @return $value;
 }
+
+
+
+@function insert-unit($value, $unit) {
+  @return ($value * $unit);
+}
