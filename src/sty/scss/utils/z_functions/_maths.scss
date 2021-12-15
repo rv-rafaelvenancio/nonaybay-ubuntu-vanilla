@@ -1,0 +1,11 @@
+@use 'sass:math';
+
+
+
+@function rounder($value, $decimal-places: 3) {
+  $e: math.pow(10, $decimal-places);
+  $value: math.round($value * $e);
+  $value: math.div($value, $e);
+
+  @return $value;
+}
