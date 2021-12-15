@@ -1,0 +1,26 @@
+@use 'sass:math';
+
+
+
+@function _rounder($x, $y: 3) {
+  $e: math.pow(10, $y);
+  $x: math.round($x * $e);
+  $x: math.div($x, $e);
+
+  @return $x;
+}
+
+
+
+$ratio:                           math.div((1 + math.sqrt(5)), 2);                          // 1.618
+
+$sp-xxs:                          _rounder(math.pow($ratio, -4.321260271));                 // 0.125
+$sp-xs:                           _rounder(math.pow($ratio, -2.880840181));                 // 0.25
+$sp-sm:                           _rounder(math.pow($ratio, -1.44042009));                  // 0.5
+$sp-md:                           _rounder(math.pow($ratio, 0));                            // 1
+$sp-lg:                           _rounder(math.pow($ratio, 0.842591738));                  // 1.5
+$sp-xl:                           _rounder(math.pow($ratio, 1.44042009));                   // 2
+$sp-xxl:                          _rounder(math.pow($ratio, 1.904131786));                  // 2.5
+$sp-xxxl:                         _rounder(math.pow($ratio, 2.283011829));                  // 3
+$sp-xxxxl:                        _rounder(math.pow($ratio, 2.880840181));                  // 4
+$sp-xxxxxl:                       _rounder(math.pow($ratio, 3.723431919));                  // 6
