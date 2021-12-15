@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use 'sass:math';
 @use '../z_variables/spacing' as *;
 @use '../z_functions/maths' as *;
@@ -63,3 +64,119 @@ $line-heights: (
   'h1-mobile':                    $line-height-h1-mobile,
   'h1':                           $line-height-h1,
 );
+
+
+
+$nudges: (
+  'h1-large':                     insert-unit(rounder(math.pow($ratio, -3.942380229)), 1rem),
+  'h1-mobile':                    insert-unit(rounder(math.pow($ratio, -3.74431739)), 1rem),
+  'h1':                           insert-unit(rounder(math.pow($ratio, -3.344551876)), 1rem),
+  'h2':                           insert-unit(rounder(math.pow($ratio, -3.344551876)), 1rem),
+  'h2-mobile':                    insert-unit(rounder(math.pow($ratio, -4.784971967)), 1rem),
+  'h3':                           insert-unit(rounder(math.pow($ratio, -4.784971967)), 1rem),
+  'h3-mobile':                    insert-unit(rounder(math.pow($ratio, -1.44042009)), 1rem),
+  'h4-large':                     0,
+  'h4':                           insert-unit(rounder(math.pow($ratio, -6.225392057)), 1rem),
+  'h4-mobile':                    insert-unit(rounder(math.pow($ratio, -2.501960138)), 1rem),
+  'h6':                           insert-unit(rounder(math.pow($ratio, -2.254120383)), 1rem),
+  'h6-large':                     insert-unit(rounder(math.pow($ratio, -2.211522674)), 1rem),
+  'p':                            insert-unit(rounder(math.pow($ratio, -1.904131786)), 1rem),
+  'p-ubuntumono':                 insert-unit(rounder(math.pow($ratio, -1.6593684)), 1rem),
+  'small':                        insert-unit(rounder(math.pow($ratio, -6.225392057)), 1rem),
+  'x-small':                      insert-unit(rounder(math.pow($ratio, -2.880840181)), 1rem),
+);
+
+
+
+$browser-rounding-compensations: (
+  'h1':                           insert-unit(rounder(math.pow($ratio, -14.3549159)), 1rem),
+  'h2':                           insert-unit(rounder(math.pow($ratio, -14.3549159)), 1rem),
+  'h3':                           insert-unit(rounder(math.pow($ratio, -14.3549159)), 1rem),
+  'h4':                           insert-unit(rounder(math.pow($ratio, -14.3549159)), 1rem),
+  'h5':                           insert-unit(rounder(math.pow($ratio, -14.3549159)), 1rem),
+  'h6':                           0,
+  'p':                            insert-unit(rounder(math.pow($ratio, -15.795335991), 4), 1rem),
+  'sm-largescreen':               insert-unit(rounder(math.pow($ratio, -15.416455948), 4), 1rem),
+  'sm':                           insert-unit(rounder(math.pow($ratio, -15.795335991), 4), 1rem),
+);
+
+
+
+// vertical spacings
+$spv--xs:                         insert-unit($sp-xs, 1rem);                                //  0.25
+$spv--sm:                         insert-unit($sp-sm, 1rem);                                //  0.5
+$spv--md:                         ($spv--xs + $spv--sm);                                    //  0.75
+$spv--lg:                         insert-unit($sp-md, 1rem);                                //  1
+$spv--xl:                         insert-unit($sp-lg, 1rem);                                //  1.5
+$spv--strip-regular:              insert-unit($sp-xxxxl, 1rem);                             //  4
+$spv--strip-deep:                 insert-unit($sp-xxxxxl, 1rem);                            //  6
+
+// horizontal spacings
+$sph--xs:                         $spv--xs;
+$sph--sm:                         $spv--sm;
+$sph--lg:                         $spv--lg;
+$sph--xl:                         $spv--xl;
+
+// space after text
+$sp-after: (
+  'xs':                           $spv--lg,
+  'sm--dense':                    $spv--lg,
+  'sm':                           $spv--lg,
+  'default':                      $spv--sm,
+  'p--dense':                     $spv--lg,
+  'p':                            $spv--xl,
+  'h4-mobile':                    $spv--lg,
+  'h3-mobile':                    $spv--lg,
+  'h2-mobile':                    $spv--lg,
+  'h1-mobile':                    $spv--lg,
+  'h4':                           $spv--lg,
+  'h3':                           $spv--lg,
+  'h2':                           $spv--lg,
+  'h1':                           $spv--lg,
+);
+
+
+
+$spv-nudge:                       map.get($nudges, 'p');
+$spv-nudge-compensation:          ($spv--sm - $spv-nudge);
+$input-margin-bottom:             ($spv--sm * 4) - ($spv-nudge * 2);
+$input-vertical-padding:          calc(#{$spv-nudge} - 1px);
+
+
+
+$form-tick-box-size:              $spv--lg;
+$form-tick-height:                insert-unit(rounder(math.pow($ratio, -2.038248443)), 1rem);
+$form-tick-offset-top:            insert-unit(rounder(math.pow($ratio, -3.478668533)), 1rem);
+$form-tick-box-nudge:             rounder(map.get($nudges, 'h1-large'));
+$form-radio-inner-circle-diameter:rounder($form-tick-height);
+$form-radio-circle-offset:        rounder($sp-sm * ($form-tick-box-size - $form-radio-inner-circle-diameter));
+
+
+
+$text-max-width:                  40em;
+
+
+
+$icon-size-sm:                    $spv--md;
+$icon-size-default:               $spv--lg;
+$icon-size-heading-icon--xs:      $spv--xl;
+$icon-size-heading-icon--sm:      ($icon-size-heading-icon--xs + $spv--sm);
+$icon-size-heading-icon:          ($icon-size-default + $icon-size-heading-icon--xs);
+$icon-size-thumb:                 ($icon-size-default + $icon-size-heading-icon--sm);
+$icon-size-thumb--lg:             ($icon-size-thumb * 2);
+
+$icon-sizes: (
+  'sm':                           $icon-size-sm,
+  'default':                      $icon-size-default,
+  'heading-icon--xs':             $icon-size-heading-icon--xs,
+  'heading-icon--sm':             $icon-size-heading-icon--sm,
+  'heading-icon':                 $icon-size-heading-icon,
+  'thumb':                        $icon-size-thumb,
+  'thumb--lg':                    $icon-size-thumb--lg,
+);
+
+$default-icon-size:               map.get($icon-sizes, 'default');
+
+
+
+$table-cell-vertical-padding:     $spv--sm;
