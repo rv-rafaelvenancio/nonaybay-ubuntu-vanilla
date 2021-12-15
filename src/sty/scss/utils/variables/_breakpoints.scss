@@ -1,0 +1,9 @@
+// original source:
+// https://github.com/canonical-web-and-design/vanilla-framework/blob/main/scss/_settings_breakpoints.scss
+
+$breakpoint-xs:                   460px;
+$breakpoint-sm:                   620px;
+$breakpoint-lg:                   1036px;
+$breakpoint-xl:                   1681px;
+$breakpoint-navigation-threshold: $breakpoint-sm;
+$breakpoint-heading-threshold:    $breakpoint-lg;
